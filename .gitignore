@@ -8,3 +8,12 @@
 /test/play.js~
 /styles/.#themes.css
 **/creds
+*.js~
+*.html~
+/emailhandlerbackup.php
+/test/play.js
+/test/temp.js
+/test/play.css
+/test/play.php
+/test/angtest.php
+**/test/**
