@@ -1,22 +1,13 @@
 *.md#
 *.php#
 *.php~
-*.*#
 *.css#
 *.css~
-/app/main.js~
-/test/play.js~
-/styles/.#themes.css
 **/creds
 *.js~
 *.html~
 /emailhandlerbackup.php
-/test/play.js
-/test/temp.js
-/test/play.css
-/test/play.php
 <<<<<<< HEAD
-/test/angtest.php
 **/test/**
 =======
 >>>>>>> origin/master
