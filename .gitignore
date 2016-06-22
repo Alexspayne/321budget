@@ -15,5 +15,8 @@
 /test/temp.js
 /test/play.css
 /test/play.php
+<<<<<<< HEAD
 /test/angtest.php
 **/test/**
+=======
+>>>>>>> origin/master
