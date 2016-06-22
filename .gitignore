@@ -1,3 +1,7 @@
 *.md#
 *.php#
 *.php~
+*.*#
+*.css#
+*.css~
+/app/main.js~
