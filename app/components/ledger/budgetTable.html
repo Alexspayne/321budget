@@ -1,0 +1,27 @@
+<h1>{{budget["Budget Name"]}}</h1>
+<p>Balance: {{budget.Balance | currency}}</p>
+<table class='table table-bordered table-hover' style= 'border:2px solid black; background: #89a' >
+ <caption>{{budget.Detail}}</caption>
+ <tr>
+  <th>Credits</th>
+  <th>Debits</th>
+  <th>User</th>
+  <th>Detail</th>
+  <th>Timestamp</th>
+  <th ng-if="(budget.Permissions == 0)">Delete</th>
+ </tr>
+ <tr ng-repeat="x in budget['Entries']">
+  <td>{{x.credit | currencyNoZero}}</td>
+  <td>{{x.debit | currencyNoZero}}</td>
+  <td>{{x.fullname}}</td>
+  <td>{{x.detail}}</td>
+  <td>{{x.timestamp}}</td>
+  <td ng-if="(budget.Permissions == 0)">
+   <form  role="form" ng-submit="deleteEntry(x)" method="post">
+    <button id = "{{x.entryid}}" type="submit" name="delete" value="{{x.entryid}}" class="btn btn-sm btn-danger pull-left">
+     <span class="glyphicon glyphicon-remove"></span>
+    </button>
+   </form>
+  </td>
+ </tr>
+</table>

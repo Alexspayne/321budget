@@ -1,0 +1,22 @@
+<entry-form></entry-form>
+
+
+<div class="container col-md-8">
+ <!-- Nav tabs -->
+ <ul ng-init="getAll()" class="nav nav-tabs" role="tablist">
+  <li ng-repeat="budget in budgets" class="{{$first ? 'active' : ''}}" role="presentation"><a href="#{{budget['Budget ID']}}" aria-controls="{{budget['Budget ID']}}" role="tab" data-toggle="tab">{{budget["Budget Name"]}}</a></li>
+  <li role="presentation"><a href="#budgetCreate" aria-controls="budgetCreate" role="tab" data-toggle="tab">New Budget</a></li>
+ </ul>
+ <!-- Tab panes -->
+ <div class="tab-content">
+  <div  ng-repeat="budget in budgets" role="tabpanel" class="tab-pane {{$first ? 'active' : ''}}" id="{{budget['Budget ID']}}">
+   <div class="container col-md-12">
+    <budget-table></budget-table>
+   </div>
+  </div> <!-- End budget table content -->
+  <div role="tabpanel" class="tab-pane" id="budgetCreate">
+   <budget-form></budget-form>
+  </div> <!-- End new budget tab content -->
+
+ </div> <!-- End tab contents -->
+</div><!-- End Container for tabs of budgets -->

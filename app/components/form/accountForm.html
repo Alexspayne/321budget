@@ -1,0 +1,44 @@
+<div ng-hide="aform.account.status" id="creationForm" class="container col-md-6">
+ <h1>Create an Account</h1>
+ <p class="lead">Use this form to create your account</p>
+ <div class="form-group">
+  <form name="accountCreationForm" role="form" ng-submit="aform.addAccount()" method="post" novalidate>
+   <fieldset >
+    <div class="form-group">
+     <label for='name' >Your Full Name</label>
+     <input ng-model ="aform.account.fullname" type='text' class="form-control" name='name' id='name' maxlength="50" required>
+    </div>
+    <div class="form-group">
+     <label for='email' >Email Address</label>
+     <small>(Optional) I will not email you or share your email unless you sign up for it.</small>
+     <input ng-model="aform.account.email" type='email' class="form-control" name='email' id='email' maxlength="50">
+    </div>
+    <div class="form-group">
+     <label for='username' >User Name</label>
+     <small>You will use this to log in.</small>
+     <input ng-model="aform.account.username" type='text' class="form-control" name='username' id='username' maxlength="50" required>
+    </div>
+    <div class="form-group">
+     <label for='password' >Password</label>
+     <input ng-model="aform.account.password" type='password' class="form-control" name='password' id='password' maxlength="50" required>
+    </div>
+    <div class="form-group">
+     <label for='phonenumber' >Phone Number</label>
+     <small>(Optional)This will be used in the future to recognize your phone number for mobile entries.</small>
+     <input type='text' class="form-control" name='phonenumber' id='phonenumber' maxlength="10" >
+    </div>
+    <input ng-disabled="accountCreationForm.$invalid" type='submit' class="btn btn-default" name='submit' value='submit'>
+    <div class="alertbox" ng-show="accountCreationForm.$invalid">
+     <p>Some required fields are missing or incomplete: </p>
+     <p class="invaliditem" ng-show="accountCreationForm.name.$invalid">Full Name</p>
+     <p class="invaliditem" ng-show="accountCreationForm.username.$invalid">User Name</p>
+     <p class="invaliditem" ng-show="accountCreationForm.password.$invalid">Password</p>
+    </div>
+   </fieldset>
+  </form>
+ </div>
+</div>
+<div ng-show="aform.account.status" >
+ <h1>Success!</h1>
+ <p>Your account has been created. You can log in with your username and password.</p>
+</div>

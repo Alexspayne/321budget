@@ -1,0 +1,27 @@
+<div class="container col-md-12">
+ <h1>Create a new budget</h1>
+ <p>Fill in the required fields and click <strong>Create Budget</strong> to create a new budget.</p>
+ <div class="form-group">
+  <form name ="budgetForm" role="form" ng-submit="bform.addBudget()" method="post" novalidate>
+   <br>
+   <div class="row">
+    <div class="col-md-6">
+     <small class="text-danger"> <?php echo $debitError; ?></small>
+     <label for="bName">Budget Name</label>
+     <input ng-model="bform.budget.name" class="form-control" type="text" placeholder="Budget Name" name="bName" required>
+    </div>
+    <div class="col-md-6">
+     <label for="bDescription">Description of Budget</label>
+     <input ng-model="bform.budget.description" class="form-control" type="text" placeholder="Description of Budget" name="bDescription">
+    </div> <!-- End Detail Text Box-->
+   </div>
+   <div class="col-md-6 row" id="budgetButton">
+    <input ng-disabled="budgetForm.$invalid" class = "btn btn-primary" type="submit" name="create" value="Create Budget">
+   </div> <!-- End Entry Button -->
+   <div class="col-md-6 alertbox" ng-show="budgetForm.$invalid">
+    <p>Some required fields are missing or incomplete: </p>
+    <p ng-show="budgetForm.bName.$invalid" class="invaliditem">Budget Name</p>
+   </div>
+  </form>
+ </div>
+</div>

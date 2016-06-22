@@ -1,0 +1,47 @@
+<div class="container col-md-4">
+ <h2>Add a New Entry</h2>
+ <p>Enter a Debit or Credit to your budget and enter an optional description.</p>
+ <div class="form-group">
+
+  <form name="entryForm" role="form" ng-submit="eform.onSubmit(entryForm)" method="post" novalidate>
+   <div class="row">
+    <div class="col-xs-6">
+     <div class="input-group" >
+      <span class="input-group-addon">$</span>
+      <input ng-model="eform.entry.dollar" class="form-control" type="text" placeholder="Enter $ amount" name="entry" required>
+     </div>
+     <div class="form-group">
+      <div class="radio">
+       <label for="debit">
+	<input ng-model="eform.entry.type" class=form-radio type="radio" name="debitOrCredit" id="debit" value="debit" required>Debit (subtract)</label>
+      </div>
+      <div class="radio">
+       <label for="credit">
+        <input ng-model="eform.entry.type" class=form-radio type="radio" name="debitOrCredit" id="credit" value="credit" required>Credit (add)</label>
+      </div>
+     </div>
+    </div><!-- End $ entry and Debit/Credit Radio -->
+    <div class="col-xs-6">
+     <input ng-model="eform.entry.description" class="form-control" type="text" placeholder="Describe Entry" name="reason">
+     <div class="form-group" ng-controller="BudgetSelectCtrl as select">
+      <select ng-model="eform.entry.budgetid" name="budgetid" required>
+       <option ng-repeat="budget in budgets" value="{{budget['Budget ID']}}" ng-disabled="!select.canEdit(budget.Permissions)">
+	{{budget['Budget Name']}}{{select.canEdit(budget.Permissions) ? "" : " (Read Only)"}}
+       </option>
+       </label>
+      </select>
+     </div><!-- End Budget Selection -->
+    </div> <!-- End Detail Text Box and Budget select-->
+   </div>
+   <div class="col-md-6">
+    <input ng-disabled="entryForm.$invalid" class = "btn btn-primary" type="submit" name="add" value="Add Entry">
+   </div> <!-- End Entry Button -->
+   <div class="col-md-6 alertbox" ng-show="entryForm.$invalid">
+    <p>Some required fields are missing or incomplete: </p>
+    <p ng-show="entryForm.entry.$invalid" class="invaliditem">Dollar amount</p>
+    <p ng-show="entryForm.type.$invalid" class="invaliditem">Entry type (Debit or Credit)</p>
+    <p ng-show="entryForm.budgetid.$invalid" class="invaliditem">Budget selection</p>
+   </div>
+  </form>
+ </div>
+</div><!-- End Entry form -->
