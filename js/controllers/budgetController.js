@@ -157,5 +157,3 @@ angular
 	    templateUrl:'../../app/components/about/about.html'
 	};   
     });
-
-

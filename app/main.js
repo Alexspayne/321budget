@@ -1,1 +1,1 @@
-angular.module('ngBudget', ['ui.bootstrap']);
+angular.module('ngBudget', ['ngRoute','budget-session']);

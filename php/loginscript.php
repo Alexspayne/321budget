@@ -60,5 +60,5 @@ if( isset( $_POST['login'] ) ) {
     mysqli_close($conn);
     
 }
-include('php/header.php');
-?>
+
+
