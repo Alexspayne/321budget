@@ -1,5 +1,5 @@
-<div>
- <table ng-hide="logtable.length == 0" ng-init="logs.getLogs()" class='table table-bordered'>
+<div ng-if="logtable.length != 0" >
+ <table ng-init="logs.getLogs()" class='table table-bordered'>
   <tr>
    <th>EventType</th>
    <th>Detail</th>

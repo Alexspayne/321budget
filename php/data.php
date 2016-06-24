@@ -246,7 +246,7 @@ function addEntry($user,$entryJSON){
 
 function getLogs($userid){
 /*  if($userid == 0){*/
-if($userid <= 1){
+if($userid == 1){
 include ('../php/functions.php');
 ////This code chooses the credentials and make a connection
 include ("../" . getAppropriateConnectionBasedOnServer());

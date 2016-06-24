@@ -8,7 +8,7 @@
   <title>321Budget.com</title>
   <link rel="icon" type="image/png" href="favicon.ico">
 
-  <!-- Bootstrap CSS -->
+<!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <!--Theme CSS-->
   <link rel="stylesheet" href="../styles/themes.css">
@@ -22,57 +22,22 @@
  </head>
 
  <body style="padding-top: 60px;" ng-app="ngBudget" ng-controller="BudgetController as ledger">
-  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" ng-controller="session as sesh">
-   <div class="container-fluid">
-    <div class="navbar-header">
-     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-     </button>
-     <a class="navbar-brand" href="#/{{sesh.isLoggedIn ? '' : 'login'}}">321<strong>BUDGET</strong></a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-     <ul class="nav navbar-nav">
-      <li ng-show="sesh.isLoggedIn">
-       <a href="#/">Home</a>
-      </li>
-
-      <li>
-       <a href="#/about">About</a>
-      </li>
-     </ul>
-
-     <ul class="nav navbar-nav navbar-right" ng-show="sesh.isLoggedIn">
-      <p class="navbar-text">Logged in as {{sesh.isLoggedIn ? sesh.isLoggedIn : "yourself... hopefully"}}</p>
-
-      <li><a href="#/logout">Log out</a></li>
-     </ul>
-
-     <ul class="nav navbar-nav navbar-right" ng-show="!sesh.isLoggedIn">
-      <li><a href="#/login">Log in</a></li>
-     </ul>
-    </div>
-
-   </div>
-
-  </nav>
+  <nav-bar></nav-bar>
   <div class="container">
    <div ng-view></div>
   </div><!-- end .container -->
 
   <footer class="text-center">
-               <hr>
-               <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
-          </footer>
+                  <hr>
+                  <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
+            </footer>
   <log-table></log-table><!-- Here for debugging -->
   <!-- AngularJS -->
   <script src="../js/vendor/angular.min.js"></script>
   <script src="../app/main.js"></script>
   <script src="../js/controllers/sessionController.js"></script>
   <script src="../js/services/creationService.js"></script>
+  <script src="../js/services/loginService.js"></script>
   <script src="../js/controllers/budgetController.js"></script>
   <script src="../js/filters/currency.js"></script>
   <script src="../js/controllers/budgetSelect.js"></script>

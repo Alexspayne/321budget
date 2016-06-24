@@ -12,7 +12,11 @@ angular
 		templateUrl: '../app/components/pages/about/index.html'		
 	    })
 	    .when('/logout', {
-		templateUrl: '../app/components/pages/logout/index.html'		
+		templateUrl: '../app/components/pages/logout/index.html',
+		controller: 'LogoutController'
+	    })
+	    .when('/accountcreate', {
+		templateUrl: '../app/components/pages/newaccount/index.html'		
 	    })
 	    .otherwise({ redirectTo: '/' });
     });

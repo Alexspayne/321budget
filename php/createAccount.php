@@ -12,8 +12,6 @@ $formName = validateFormData( $form['fullname'] );
 $formEmail = validateFormData( $form['email'] );
 $formPhoneNumber = validateFormData( $form['phonenumber'] );
 
-
-
 // connect to database
 include ("../".getAppropriateConnectionBasedOnServer());
 

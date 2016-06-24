@@ -4,7 +4,7 @@ angular
 	/*
 	 I'll want to save the budget table to a javascript object.
 	 */
-		
+	
 	$scope.deleteEntry = function (x){
 	    budgetFactory.callDB('deleteEntry',x.entryid).success(function(data){
 		$scope.getAll();		
@@ -20,6 +20,27 @@ angular
 		console.log(error);
 	    });
 	};
+    });
+
+angular
+    .module('ngBudget')
+    .controller('LoginController',function(loginService, session) {
+	var loginCtrl = this;
+	loginCtrl.alertToggle = true;
+	this.loginInfo = {};
+	
+	this.login = function(){
+	    this.alertToggle = true;
+	    loginService.login(JSON.stringify(this.loginInfo))
+		.success(function(data) {
+		    console.log(data);
+    		    session.getSession();
+		    
+		})
+		.error(function(error) {
+		    console.log(error);
+		});
+	};		
     });
 
 angular
@@ -83,10 +104,10 @@ angular
 		this.addBudget = function(){
 		    budgetFactory.callDB('addBudget',this.budget.name,this.budget.description)
 			.success(function(data) {
-			$scope.getAll();
-		    }).error(function(error) {
-			console.log(error);
-		    });
+			    $scope.getAll();
+			}).error(function(error) {
+			    console.log(error);
+			});
 		    
 		};
 		
@@ -146,7 +167,7 @@ angular
 	};
 	
     });
-	     
+
 
 angular
     .module('ngBudget')
@@ -155,5 +176,16 @@ angular
 	return {
 	    restrict :'E',
 	    templateUrl:'../../app/components/about/about.html'
+	};   
+    });
+
+
+angular
+    .module('ngBudget')
+    .directive('navBar', function() {
+
+	return {
+	    restrict :'E',
+	    templateUrl:'../../app/shared/navbar.html'
 	};   
     });

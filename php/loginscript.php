@@ -1,15 +1,17 @@
 <?php
 
-include ('php/functions.php');
+include ('../php/functions.php');
 
-if( isset( $_POST['login'] ) ) {
-    // create variables
-    // wrap the data with our function
-    $formUser = validateFormData( $_POST['username'] );
-    $formPass = validateFormData( $_POST['password'] );
+$form = json_decode($_POST['login'], true);
+
+$formUser = $formPass = null;
+
+$formUser = validateFormData( $form['username'] );
+$formPass = validateFormData( $form['password'] );
+
     // connect to database
     //    include('connection.php');
-    include (getAppropriateConnectionBasedOnServer());
+    include ("../".getAppropriateConnectionBasedOnServer());
     // create SQL query
     $query = "SELECT username, userid, fullname, email, password FROM users WHERE username='$formUser'";
     // store the result
@@ -34,31 +36,22 @@ if( isset( $_POST['login'] ) ) {
             $_SESSION['loggedInUserName'] = $username;
             $_SESSION['loggedInUserId'] = $userid;
             $_SESSION['loggedInEmail'] = $email;
-            header("Location: index.php");
-            //		} else if($formPass == $hashedPass){//accepting unhashed to testing
-            //			session_start();
-            //
-            //            // store data in SESSION variables
-	    //            $_SESSION['loggedInUser'] = $user;
-	    //            $_SESSION['loggedInEmail'] = $email;
-	    //            header("Location: profile.php");
-	    //        
+	 echo "You've successfully logged in!";
+
         } else { // hashed password didn't verify
             
             // error message
-            $loginError = "<div class='alert alert-danger'>Wrong username / password combination. Try again.</div>";
-            
+           echo "You've entered an incorrect password.";
         }
         
     } else { // there are no results in database
-        
-        $loginError = "<div class='alert alert-danger'>No such user in database. Please try again. <a class='close' data-dismiss='alert'>&times;</a></div>";
+        echo "No such user in database. Sorry!";
         
     }
-    
+     
     // close the mysql connection
     mysqli_close($conn);
-    
-}
+   
+
 
 
