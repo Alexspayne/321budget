@@ -1,7 +1,7 @@
-<div class="col-md-8" ng-controller="LoginController as lform">
-  <div ng-if="lform.status && lform.alertToggle" ng-click="lform.alertToggle = !lform.alertToggle" class="alert alert-warning">
-   {{lform.status}}
-  </div>
+<div class="col-md-8" ng-controller="LoginController as lform" ng-show="!SessionService.isLoggedIn">
+ <div ng-if="lform.status && lform.alertToggle" ng-click="lform.alertToggle = !lform.alertToggle" class="alert alert-warning">
+  {{lform.status}}
+ </div>
  <div>
   <h1>Login</h1>
   <p class="lead">Use this form to log in to your account</p>
@@ -23,3 +23,9 @@
   <p>This website is a work in progress.</p>
   <p>Feel free to create an account to explore. If you'd prefer, you can log in with user name: demo and password: demo to access a dummy account to try out some features.</p>
  </div>
+</div>
+<div ng-show="SessionService.isLoggedIn">
+ <h1>You're logged in!</h1>
+ <p>Congrats! Click <a href="#/">Home</a> to use the application.</p>
+ <p>Click <a href="#/logout">Log Out</a> if you want to log out.</p>
+</div>

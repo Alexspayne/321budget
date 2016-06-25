@@ -3,43 +3,40 @@ angular
 
 angular
     .module('budget-session')
-    .service('session',function($http){
-	var service = this;
+    .factory('sessionS',function($http){
 
-	// See if user is logged in.
-	//I need this to run whenever logout/login happens.
-	this.getSession = function(){
-	$http({method:"GET", url:"../../php/isloggedin.php"})
-	    .success(function(data){
-		service.isLoggedIn = data;
-	    })
-	    .error(function(error){
-		console.log(error);
-	    });
-	};
+	function SessionService(){
+	    var self = this;
+	    self.isLoggedIn = false;
+
+	    self.userName = "";
+		// See if user is logged in.
+		//I need this to run whenever logout/login happens.
+	    self.getSession = function(){
+		return $http({method:"GET", url:"../../php/isloggedin.php"})
+		    .success(function(data){
+			self.userName = data.username;
+			self.isLoggedIn = data.isLoggedIn; //This is just for testing
+		    })
+		    .error(function(error){
+			console.log(error);
+		    });
+	    };
+	    self.getSession();
+	}
+
+	return new SessionService();
     });
 
 angular
     .module('budget-session')
-    .controller('sessionCtrl',function(session){
-	var service = this;
-
-	// See if user is logged in.
-	//I need this to run whenever logout/login happens.
-
-
-	
-    });
-		    
-angular
-    .module('budget-session')
-    .controller('LogoutController',function($http, session){
+    .controller('LogoutController',function($http, sessionS){
 	var controller = this;
 	
 	$http({method:"GET", url:"../../php/logout.php"})
 	    .success(function(data){
 		console.log("logged out");
-		session.getSession();
+		sessionS.getSession();
 	    })
 	    .error(function(error){
 		console.log(error);

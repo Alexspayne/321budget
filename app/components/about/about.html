@@ -2,7 +2,7 @@
 
 <div>
  <h1>Welcome to 321Budget.com!</h1>
- <p>This web application is built to help people stay on a budget by giving them a way to track expenses easily. It is built on the LAMP stack using AngularJS, Bootstrap, and JQuery. I'm currently in the process of making this a single page application using AngularJS.</p>
+ <p>This single page web application is built to help people stay on a budget by giving them a way to track expenses easily. It is built on the LAMP stack using AngularJS, Bootstrap, and JQuery.</p>
  <h2>Adding/Deleting Entries</h2>
  <p>When you make a purchase or add money to a budget, you can do so using the Entry Form</p>
  <h2>Creating a new budget</h2>
@@ -11,8 +11,9 @@
  <p> If your phone number or email address if on file, you can send an email/text to ledger@321budget.com to add an entry to a budget. This is helpful if you are out shopping and do not have access to a computer or an internet connection. This feature is a work in progress <strong> and is currently not working</strong>. Email message should be of the form: </p><h3>
   "credit/debit ##.## detail"
  </h3>
- <h3>Examples:</h3>
+ <h3>Example:</h3>
  <p>"Credit 100 June's discretionary allowance"</p>
  <p>If Debit or Credit are not provided, it will default to Debit</p>
- 
+
+ <p ng-show="!SessionService.isLoggedIn"> Click <strong><a href="#/login">here</a></strong> to log in.</p>
 </div>

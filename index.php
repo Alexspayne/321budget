@@ -8,7 +8,7 @@
   <title>321Budget.com</title>
   <link rel="icon" type="image/png" href="favicon.ico">
 
-<!-- Bootstrap CSS -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <!--Theme CSS-->
   <link rel="stylesheet" href="../styles/themes.css">
@@ -22,20 +22,21 @@
  </head>
 
  <body style="padding-top: 60px;" ng-app="ngBudget" ng-controller="BudgetController as ledger">
+
   <nav-bar></nav-bar>
   <div class="container">
    <div ng-view></div>
   </div><!-- end .container -->
 
   <footer class="text-center">
-                  <hr>
-                  <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
-            </footer>
+   <hr>
+   <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
+  </footer>
   <log-table></log-table><!-- Here for debugging -->
   <!-- AngularJS -->
   <script src="../js/vendor/angular.min.js"></script>
-  <script src="../app/main.js"></script>
   <script src="../js/controllers/sessionController.js"></script>
+  <script src="../app/main.js"></script>
   <script src="../js/services/creationService.js"></script>
   <script src="../js/services/loginService.js"></script>
   <script src="../js/controllers/budgetController.js"></script>

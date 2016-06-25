@@ -6,10 +6,11 @@ angular
 		templateUrl: '../app/components/pages/login/index.html'
 	    })
 	    .when('/', {
-		templateUrl: '../app/components/pages/budgetview/index.html'		
+		templateUrl: '../app/components/pages/budgetview/index.html',
+		controller: 'RedirectNonLogged'
 	    })
 	    .when('/about', {
-		templateUrl: '../app/components/pages/about/index.html'		
+		templateUrl: '../app/components/pages/about/index.html'
 	    })
 	    .when('/logout', {
 		templateUrl: '../app/components/pages/logout/index.html',

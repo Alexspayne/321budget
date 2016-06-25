@@ -1,9 +1,18 @@
 <?php
 session_start();
 if($_SESSION['loggedInUserId']){
- echo $_SESSION['loggedInUserName'];
+ $SessionInfo = [
+  "username" => $_SESSION['loggedInUserName'],
+  "isLoggedIn" => true,
+  ];
+
 }else{
- echo false;
+ $SessionInfo = [
+  "username" => "nobody",
+  "isLoggedIn" => false,
+ ];
 }
+
+echo json_encode($SessionInfo);
 
 

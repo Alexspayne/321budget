@@ -1,9 +1,11 @@
 angular
     .module('ngBudget')
-    .controller('BudgetController', function($scope, budgetFactory) {
+    .controller('BudgetController', function($scope, budgetFactory, sessionS) {
 	/*
 	 I'll want to save the budget table to a javascript object.
 	 */
+
+	$scope.SessionService = sessionS;
 	
 	$scope.deleteEntry = function (x){
 	    budgetFactory.callDB('deleteEntry',x.entryid).success(function(data){
@@ -24,23 +26,34 @@ angular
 
 angular
     .module('ngBudget')
-    .controller('LoginController',function(loginService, session) {
+    .controller('LoginController',function($scope, $location, loginService, sessionS) {
 	var loginCtrl = this;
 	loginCtrl.alertToggle = true;
 	this.loginInfo = {};
-	
+
 	this.login = function(){
 	    this.alertToggle = true;
 	    loginService.login(JSON.stringify(this.loginInfo))
 		.success(function(data) {
 		    console.log(data);
-    		    session.getSession();
-		    
+		    sessionS.getSession().then(function(){
+			if(sessionS.isLoggedIn){
+			    $location.path('/');
+			}
+		    });
 		})
 		.error(function(error) {
 		    console.log(error);
 		});
 	};		
+    });
+
+angular
+    .module('ngBudget')
+    .controller('RedirectNonLogged',function($location, sessionS){
+	if(!sessionS.isLoggedIn){
+	    $location.path('/login');
+	}
     });
 
 angular
@@ -189,3 +202,4 @@ angular
 	    templateUrl:'../../app/shared/navbar.html'
 	};   
     });
+

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" ng-controller="sessionCtrl as sesh">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
  <div class="container-fluid">
   <div class="navbar-header">
    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -7,12 +7,12 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
    </button>
-   <a class="navbar-brand" href="#/{{sesh.isLoggedIn ? '' : 'login'}}">321<strong>BUDGET</strong></a>
+   <a class="navbar-brand" href="#/{{SessionService.isLoggedIn ? '' : 'login'}}">321<strong>BUDGET</strong></a>
   </div>
 
   <div class="collapse navbar-collapse" id="navbar-collapse">
    <ul class="nav navbar-nav">
-    <li ng-show="sesh.isLoggedIn">
+    <li ng-show="SessionService.isLoggedIn">
      <a href="#/">Home</a>
     </li>
 
@@ -21,13 +21,13 @@
     </li>
    </ul>
 
-   <ul class="nav navbar-nav navbar-right" ng-show="sesh.isLoggedIn">
-    <p class="navbar-text">Logged in as {{sesh.isLoggedIn ? sesh.isLoggedIn : "yourself... hopefully"}}</p>
+   <ul class="nav navbar-nav navbar-right" ng-show="SessionService.isLoggedIn">
+    <p class="navbar-text">Logged in as {{SessionService.isLoggedIn ? SessionService.userName : "yourself... hopefully"}}</p>
 
     <li><a href="#/logout">Log out</a></li>
    </ul>
 
-   <ul class="nav navbar-nav navbar-right" ng-show="!sesh.isLoggedIn">
+   <ul class="nav navbar-nav navbar-right" ng-show="!SessionService.isLoggedIn">
     <li><a href="#/login">Log in</a></li>
    </ul>
   </div>

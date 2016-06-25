@@ -1,4 +1,4 @@
-<div ng-if="logtable.length != 0" >
+<div ng-if="logtable.length != 0 && SessionService.isLoggedIn" >
  <table ng-init="logs.getLogs()" class='table table-bordered'>
   <tr>
    <th>EventType</th>
