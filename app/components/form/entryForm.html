@@ -25,10 +25,13 @@
      <input ng-model="eform.entry.description" class="form-control" type="text" placeholder="Describe Entry" name="reason">
      <div class="form-group" ng-controller="BudgetSelectCtrl as select">
       <select ng-model="eform.entry.budgetid" name="budgetid" required>
+       <option disabled value="">Select a budget</option>
        <option ng-repeat="budget in budgets" value="{{budget['Budget ID']}}" ng-disabled="!select.canEdit(budget.Permissions)">
 	{{budget['Budget Name']}}{{select.canEdit(budget.Permissions) ? "" : " (Read Only)"}}
        </option>
-       </label>
+       <option value="create">
+	New Budget
+       </option>
       </select>
      </div><!-- End Budget Selection -->
     </div> <!-- End Detail Text Box and Budget select-->

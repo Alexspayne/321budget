@@ -65,7 +65,7 @@ angular
 	    controller:function($scope,budgetFactory) {
 		this.entry = {};
 		this.entry.type = 'debit';
-		//ng-init="$first && (select.canEdit(budget.Permissions)) && budget['Budget ID']" 
+		$scope.bEntry = this.entry;
 		
 		this.addEntry = function (){
 		    budgetFactory.callDB('addEntry',JSON.stringify(this.entry)).success(function(data){
@@ -112,12 +112,18 @@ angular
 	    restrict:'E',
 	    templateUrl:'../../app/components/form/budgetForm.html',
 	    controller:function($scope,budgetFactory) {
+		var self = this;
 		this.budget = {};
 		
 		this.addBudget = function(){
 		    budgetFactory.callDB('addBudget',this.budget.name,this.budget.description)
 			.success(function(data) {
 			    $scope.getAll();
+			    $scope.bEntry.budgetid = parseInt(data);//Someday this will be the newly assigned budget id.
+			    self.budget.name = '';
+			    self.budget.description = '';
+			    
+
 			}).error(function(error) {
 			    console.log(error);
 			});
@@ -203,3 +209,12 @@ angular
 	};   
     });
 
+
+
+angular
+    .module('ngBudget')
+    .controller('TabController',function($routeParams, $location) {
+
+	console.log($routeParams.id);
+	$location.path('/' + $routeParams.id);
+    });

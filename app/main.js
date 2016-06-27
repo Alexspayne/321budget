@@ -1,1 +1,1 @@
-angular.module('ngBudget', ['ngRoute','budget-session']);
+angular.module('ngBudget', ['ui.bootstrap', 'ngRoute','budget-session','ngMaterial', 'ngMessages', 'material.svgAssetsCache']);

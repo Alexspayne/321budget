@@ -18,6 +18,5 @@ angular
 	    })
 	    .when('/accountcreate', {
 		templateUrl: '../app/components/pages/newaccount/index.html'		
-	    })
-	    .otherwise({ redirectTo: '/' });
+	    });
     });

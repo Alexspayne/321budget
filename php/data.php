@@ -58,7 +58,7 @@ from
   $arrayForConvertB[] = $ebudgeB;
 
  }
- 
+
  /* Getting the budget from the budgetIds */
  /* This needs to be looped over the budgetIds array */
  /* foreach($budgetid in $budgetIds)*/
@@ -90,7 +90,7 @@ ORDER BY budgetentries.timestamp DESC;"; /* This query will be dynamic based on 
    $balance -= $row['debit'];
 
    $budgets[] = $row;
-   
+
   }
 
   $individualBudgetObject =
@@ -105,7 +105,7 @@ ORDER BY budgetentries.timestamp DESC;"; /* This query will be dynamic based on 
  }
  /* End loop over budgetID array */
  $ej3 = json_encode($arrayForConvert);
- 
+
  mysqli_close($conn);
 
  echo $ej3;
@@ -125,25 +125,40 @@ function addBudget($userIDunsafe,$budgetNameunsafe,$budgetDescriptionunsafe){
  $budgetDescription = validateFormData($budgetDescriptionunsafe);
  /* Create budget and add permissions*/
 
- 
- $query = "INSERT INTO `alexhann_ledger`.`budgets` (`budgetid`, `budgetname`, `detail`, `createdtime`) 
+
+ $query = "INSERT INTO `alexhann_ledger`.`budgets` (`budgetid`, `budgetname`, `detail`, `createdtime`)
 VALUES (NULL,'" .
 	  $budgetName. "','" .
 	  $budgetDescription. "',
  CURRENT_TIMESTAMP);";
 
- $query .= "INSERT INTO `alexhann_ledger`.`budgetpermissions` 
-(`permissionid`, `userid`, `budgetid`, `createdtime`, `permissionslevel`) 
+ $query .= "INSERT INTO `alexhann_ledger`.`budgetpermissions`
+(`permissionid`, `userid`, `budgetid`, `createdtime`, `permissionslevel`)
 VALUES (NULL,
  '".$userID."',
  LAST_INSERT_ID(),
  CURRENT_TIMESTAMP, '0');
 ";
 
+ $query .="SELECT budgetid FROM `budgetpermissions` WHERE permissionid = LAST_INSERT_ID();";
+ 
  $result = mysqli_multi_query($conn, $query);
 
  if($result){
-  echo 'Budget added';
+  do
+  {
+   // Store first result set
+   if ($result2=mysqli_store_result($conn)) {
+    // Fetch one and one row
+    while ($row=mysqli_fetch_row($result2))
+    {
+     echo $row[0];
+    }
+    // Free result set
+    mysqli_free_result($result2);
+   }
+  }
+  while (mysqli_next_result($conn));
 
  }
  else{
@@ -163,7 +178,7 @@ function deleteEntry($userIDunsafe,$entryIDunsafe){
  $entryID = validateFormData($entryIDunsafe);
 
  /* Remove entry from ledger */
- 
+
  $query = "DELETE FROM `alexhann_ledger`.`budgetentries` WHERE `budgetentries`.`entryid` = '".$entryID."';";
 
  $result = mysqli_query($conn, $query);
@@ -183,18 +198,18 @@ function addPermission($userID,$budgetID,$permissionLevel){
  include ("../" . getAppropriateConnectionBasedOnServer());
 
  /* Create budget */
- $query = "INSERT INTO `alexhann_ledger`.`budgetpermissions` (`permissionid`, `userid`, `budgetid`, `createdtime`, `permissionslevel`) 
+ $query = "INSERT INTO `alexhann_ledger`.`budgetpermissions` (`permissionid`, `userid`, `budgetid`, `createdtime`, `permissionslevel`)
  VALUES (NULL, '" .
 	  $userID . "','" .
 	  $budgetID . "'," .
 	  "CURRENT_TIMESTAMP, '" .
 	  $permissionLevel . "');" . ";";
 
- 
+
  $result = mysqli_query($conn, $query);
 
  if($result){
-  
+
   echo 'Permission added:' . print_r($result);
  }
  else{
@@ -217,7 +232,7 @@ function addEntry($user,$entryJSON){
  $budgetidFromPost = $entryArray['budgetid'];
 
  $etype = validateFormData($debitOrCreditFromPost);
- 
+
  if( $etype == "debit"){
   $debit = validateFormData( $entryFromPost);
  }else{
@@ -225,7 +240,7 @@ function addEntry($user,$entryJSON){
  }
  $reason = validateFormData( $reasonFromPost);
  $budgetid = validateFormData( $budgetidFromPost);
- 
+
  if(($debit || $credit) && $user){
   $result = addEntryFromWebsite($debit,$credit,$reason,$user,$budgetid,$conn);
   if( $result ){
@@ -245,28 +260,28 @@ function addEntry($user,$entryJSON){
 
 
 function getLogs($userid){
-/*  if($userid == 0){*/
-if($userid == 1){
-include ('../php/functions.php');
-////This code chooses the credentials and make a connection
-include ("../" . getAppropriateConnectionBasedOnServer());
+ /*  if($userid == 0){*/
+ if($userid == 1){
+  include ('../php/functions.php');
+  ////This code chooses the credentials and make a connection
+  include ("../" . getAppropriateConnectionBasedOnServer());
 
-$query = "SELECT * FROM logs ORDER BY Time DESC LIMIT 0 , 15";
-$results = mysqli_query($conn, $query);
+  $query = "SELECT * FROM logs ORDER BY Time DESC LIMIT 0 , 15";
+  $results = mysqli_query($conn, $query);
 
-/* Saving the SQL results to a PHP array
-so that I can convert it to JSON */
-$logs=array();
+  /* Saving the SQL results to a PHP array
+     so that I can convert it to JSON */
+  $logs=array();
 
-while($row = mysqli_fetch_assoc($results)){
+  while($row = mysqli_fetch_assoc($results)){
 
-$logs[] = $row;
+   $logs[] = $row;
 
-}
+  }
 
-mysqli_close($conn);
+  mysqli_close($conn);
 
-echo json_encode($logs);
+  echo json_encode($logs);
 
-}
+ }
 }

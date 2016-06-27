@@ -1,30 +1,33 @@
-<div class="col-md-8" ng-controller="LoginController as lform" ng-show="!SessionService.isLoggedIn">
+<div class="col-md-5 col-md-offset-1" ng-controller="LoginController as lform" ng-show="!SessionService.isLoggedIn">
  <div ng-if="lform.status && lform.alertToggle" ng-click="lform.alertToggle = !lform.alertToggle" class="alert alert-warning">
   {{lform.status}}
  </div>
  <div>
   <h1>Login</h1>
-  <p class="lead">Use this form to log in to your account</p>
   <form class="form-inline" ng-submit="lform.login()">
    <div class="form-group">
-    <label for="login-username" class="sr-only">Username</label>
+    <label for="login-username">Username</label>
     <input ng-model="lform.loginInfo.username" type="text" class="form-control" id="login-username" placeholder="username" name="username">
    </div>
    <div class="form-group">
-    <label for="login-password" class="sr-only">Password</label>
+    <label for="login-password">Password</label>
     <input ng-model="lform.loginInfo.password" type="password" class="form-control" id="login-password" placeholder="password" name="password">
+      </div>
+   <div class="form-group row">
+    <button type="submit" class="btn btn-primary" name="login">Login!</button>
+    <a href="#/accountcreate"><button class="btn btn-primary">Create a new account</button></a>
    </div>
-   <button type="submit" class="btn btn-default" name="login">Login!</button>
   </form>
-  <a href="#/accountcreate">Create a new account</a>
- </div>
- <div class="col-md-4">
+
+  </div>
+</div>
+ <div class="col-md-5">
   <h1>Welcome to my project!</h1>
   <p>This website is a work in progress.</p>
   <p>Feel free to create an account to explore. If you'd prefer, you can log in with user name: demo and password: demo to access a dummy account to try out some features.</p>
  </div>
-</div>
-<div ng-show="SessionService.isLoggedIn">
+
+ <div ng-show="SessionService.isLoggedIn">
  <h1>You're logged in!</h1>
  <p>Congrats! Click <a href="#/">Home</a> to use the application.</p>
  <p>Click <a href="#/logout">Log Out</a> if you want to log out.</p>

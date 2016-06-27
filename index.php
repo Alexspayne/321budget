@@ -28,10 +28,7 @@
    <div ng-view></div>
   </div><!-- end .container -->
 
-  <footer class="text-center">
-   <hr>
-   <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
-  </footer>
+
   <log-table></log-table><!-- Here for debugging -->
   <!-- AngularJS -->
   <script src="../js/vendor/angular.min.js"></script>
@@ -44,6 +41,13 @@
   <script src="../js/controllers/budgetSelect.js"></script>
   <script src="../js/services/budgetFactory.js"></script>
 
+  <!-- For Tabs -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+  <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  
   <!-- Routes -->
   <script src="../js/vendor/angular-route.min.js"></script>
   <script src="../js/routeConfig.js"></script>
@@ -55,4 +59,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
  </body>
+
+ <footer class="footer text-center">
+  <hr>
+  <small>Coded by Alex Payne using AngularJS, PHP, and MySQL</small>
+ </footer>
 </html>

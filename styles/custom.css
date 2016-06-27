@@ -26,9 +26,23 @@
     border: solid 1px black;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #d1fdef;
+}
 body {
+    /* Margin bottom by footer height */
     background-color: #d1fdef;
-	
+    margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+
 }
 
 #mainA{
@@ -43,7 +57,7 @@ input {
 	margin-top: 0;
 }*/
 .form-group {
- 
+    margin: 10px 0px; 
 }
 
 .col-md-12 input.btn.btn-primary {
