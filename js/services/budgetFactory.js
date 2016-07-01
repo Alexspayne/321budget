@@ -8,7 +8,7 @@ function callDB(queryName,param1,param2){
 	
 	var req = {
 	    method: 'POST',
-	    url: '../../php/budget_mysql.php',
+	    url: '../../src/budget_mysql.php',
 	    //   data: "id=" + 1
 	    data: "queryName=" + queryName + "&" +
 		"param1=" + param1 + "&" +

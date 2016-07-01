@@ -1,7 +1,7 @@
 <?php
 
 function getAccessibleBudgets($userForQuery){
-    include ('../php/functions.php');
+    include ('../src/functions.php');
     ////This code chooses the credentials and make a connection
     include ("../" . getAppropriateConnectionBasedOnServer());
     /* Here I'm attempting to use the new database structure with budgets as a table */

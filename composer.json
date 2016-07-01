@@ -1,0 +1,14 @@
+{
+    "name": "apayne/321budget",
+    "authors": [
+        {
+            "name": "Alex Payne"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "^0.4.5"
+    },
+    "autoload": {
+      "psr-4": { "321budget\\": "src/" }
+    }
+}

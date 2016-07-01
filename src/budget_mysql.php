@@ -1,6 +1,6 @@
 <?php
 
-include("../php/data.php");
+include("../src/data.php");
 session_start();
 
 if($_POST['queryName'] === 'getAll'){

@@ -12,3 +12,5 @@
 =======
 >>>>>>> origin/master
 /node_modules/**
+**/vendor/**
+/composer.json~

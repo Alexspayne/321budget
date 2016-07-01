@@ -115,7 +115,7 @@ ORDER BY budgetentries.timestamp DESC;"; /* This query will be dynamic based on 
 
 function addBudget($userIDunsafe,$budgetNameunsafe,$budgetDescriptionunsafe){
 
- include ('../php/functions.php');
+ include ('../src/functions.php');
  ////This code chooses the credentials and make a connection
  include ("../" . getAppropriateConnectionBasedOnServer());
 
@@ -168,7 +168,7 @@ VALUES (NULL,
 
 function deleteEntry($userIDunsafe,$entryIDunsafe){
 
- include ('../php/functions.php');
+ include ('../src/functions.php');
  ////This code chooses the credentials and make a connection
  include ("../" . getAppropriateConnectionBasedOnServer());
 
@@ -193,7 +193,7 @@ function deleteEntry($userIDunsafe,$entryIDunsafe){
 
 function addPermission($userID,$budgetID,$permissionLevel){
 
- include ('../php/functions.php');
+ include ('../src/functions.php');
 
  include ("../" . getAppropriateConnectionBasedOnServer());
 
@@ -220,7 +220,7 @@ function addPermission($userID,$budgetID,$permissionLevel){
 
 function addEntry($user,$entryJSON){
 
- include ('../php/functions.php');
+ include ('../src/functions.php');
  ////This code chooses the credentials and make a connection
  include ("../" . getAppropriateConnectionBasedOnServer());
 
@@ -262,7 +262,7 @@ function addEntry($user,$entryJSON){
 function getLogs($userid){
  /*  if($userid == 0){*/
  if($userid == 1){
-  include ('../php/functions.php');
+  include ('../src/functions.php');
   ////This code chooses the credentials and make a connection
   include ("../" . getAppropriateConnectionBasedOnServer());
 

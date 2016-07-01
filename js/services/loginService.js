@@ -5,7 +5,7 @@ angular
 	this.login = function(login){
 	    var req = {
 		method: 'POST',
-		url: '../../php/loginscript.php',
+		url: '../../src/loginscript.php',
 		data: "login=" + login 		
 	    };
 	    return $http(req);

@@ -1,6 +1,6 @@
 <?php
 
-include ('../php/functions.php');
+include ('../src/functions.php');
 
 $form = json_decode($_POST['account'], true);
 

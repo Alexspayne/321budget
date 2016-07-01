@@ -8,7 +8,7 @@ angular
 	
 	var req = {
 	    method: 'POST',
-	    url: '../../php/createAccount.php',
+	    url: '../../src/createAccount.php',
 	    data: "account=" + accountArray 
 
 	};

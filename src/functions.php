@@ -129,14 +129,14 @@ function getAppropriateConnectionBasedOnServer(){
     if($_SERVER["HTTP_HOST"] == 'localhost:8888')
     {
         //	echo "Connected to LocalHost";
-        return './php/creds/mamp.php';
+        return './src/creds/mamp.php';
     }else if($_SERVER["CONTEXT_DOCUMENT_ROOT"] == "/var/www/html"){
   
-        return './php/creds/linuxsqlconnection.php';	    
+        return './src/creds/linuxsqlconnection.php';	    
   
     }else{
         //	echo "Connected to live site";
-        return './php/creds/connection.php';		
+        return './src/creds/connection.php';		
     }
 }
 
